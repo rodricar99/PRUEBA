@@ -1,0 +1,7 @@
+organization=rodricar99
+projectKey=rodricar99_PRUEBA
+serverUrl=https://sonarcloud.io
+serverVersion=8.0.0.29017
+dashboardUrl=https://sonarcloud.io/dashboard?id=rodricar99_PRUEBA
+ceTaskId=AYDU8iz4uc8wsNhBm3pW
+ceTaskUrl=https://sonarcloud.io/api/ce/task?id=AYDU8iz4uc8wsNhBm3pW
