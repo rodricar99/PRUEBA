@@ -11,7 +11,7 @@ class Strategy{
         bool winner = false;
     public:
         Strategy(){};
-        virtual ~Strategy(){}
+        ~Strategy(){}
         string getType(){return type;}
         int getCount(){return count;}
         bool getWinner(){return winner;}
@@ -28,7 +28,7 @@ class Five_Pair: public Strategy{
             else if(n%2 == 0)
                 count++;
         }   
-        virtual ~Five_Pair();     
+           
 };
 
 class Five_Impair: public Strategy{
@@ -41,7 +41,7 @@ class Five_Impair: public Strategy{
             if(n%2 != 0)
                 count++;
         }
-    virtual ~Five_Impair();
+    
 };
 
 class ES_primo: public Strategy{
@@ -61,7 +61,7 @@ class ES_primo: public Strategy{
             else if(divisores == 2)
                 count++;
         }
-    virtual ~ES_primo();
+    
 };
 
 class Three_mult10: public Strategy{
@@ -74,7 +74,7 @@ class Three_mult10: public Strategy{
             else if(n%10==0)
                 count++;
         }
-    virtual ~Three_mult10();
+    
 };
 
 class Two_mult25: public Strategy{
@@ -87,7 +87,7 @@ class Two_mult25: public Strategy{
             else if(n%25 == 0)
                 count++;
         }
-    virtual ~Two_mult25();
+    
 };
 
 class Player{
@@ -107,7 +107,7 @@ class Player{
             this->strategy = strategy;
         }
         Strategy* getStrategy(){return strategy;}
-        virtual ~Player(){}
+        ~Player(){}
 };
 
 class empresa_xyz{
