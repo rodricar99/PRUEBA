@@ -1,26 +1,26 @@
-#include <iostream>
+# include <iostream>
+using namespace std ;
 
-using namespace std;
-
-
-
-int* generar_arreglo(int cantidad, int valor, int step){
-    int lista[100000];
-    for(int i=0;i<cantidad;i++){
-        if(i%step==0 or i==0)
-            lista[i] = valor;
-        else
-            lista[i] = 0;
-    }
-    return lista;
-}
-
-int main() {
-    int cantidad = 0, valor = 0, step = 0;
-    cin>>cantidad>>valor>>step;
-    int* lista = generar_arreglo(cantidad,valor,step);
-    cout<<"--------------"<<endl;
-    for(int i=0;i<cantidad;i++)
-        cout<<*(lista+i)<<" ";
-    return 0;
+int main (){
+  int n=0,mejor=0;
+  double precio=0,peso=0,posicion=0;
+  cout<<"Ingrese la cantidad de productos: ";
+  cin>>n;
+  cout<<"Ingrese los productos (precio peso)"<<endl;
+  double listaPrecio[n],listaPeso[n],total[n];
+  for(int i=0; i<n;i++){
+    cout<<"Producto "<<i+1<<": ";
+    cin>>precio>>peso;
+    listaPrecio[i] = precio;
+    listaPeso[i] = peso;
+    total[i]=listaPrecio[i]/listaPeso[i];
+  }
+  double menor = total[0];
+  for(int i=0;i<n;i++){
+    if(menor>total[i])
+      menor = total[i];
+      posicion=i;
+  }
+  cout<<"El producto con mejor relacion es el: "<<posicion+1;
+  return 0;
 }
