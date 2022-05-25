@@ -3,5 +3,5 @@ projectKey=rodricar99_Pc1_sofware
 serverUrl=https://sonarcloud.io
 serverVersion=8.0.0.29242
 dashboardUrl=https://sonarcloud.io/dashboard?id=rodricar99_Pc1_sofware
-ceTaskId=AYD5CZ4ArTjoJJb1Dp8W
-ceTaskUrl=https://sonarcloud.io/api/ce/task?id=AYD5CZ4ArTjoJJb1Dp8W
+ceTaskId=AYD5F212mNM3SLSG3Zau
+ceTaskUrl=https://sonarcloud.io/api/ce/task?id=AYD5F212mNM3SLSG3Zau

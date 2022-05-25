@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <random>
-#include <ctime> 
+#include <ctime>
 using namespace std;
 
 class Strategy{
@@ -10,8 +10,8 @@ class Strategy{
         int count;
         bool winner = false;
     public:
-        Strategy(){}
-        ~Strategy(){}
+        Strategy(){};
+        virtual ~Strategy(){}
         string getType(){return type;}
         int getCount(){return count;}
         bool getWinner(){return winner;}
@@ -28,6 +28,7 @@ class Five_Pair: public Strategy{
             else if(n%2 == 0)
                 count++;
         }   
+        virtual ~Five_Pair();     
 };
 
 class Five_Impair: public Strategy{
@@ -40,9 +41,10 @@ class Five_Impair: public Strategy{
             if(n%2 != 0)
                 count++;
         }
+    virtual ~Five_Impair();
 };
 
-class Is_Prime: public Strategy{
+class ES_primo: public Strategy{
     public:
         void function(int n)override{
             int divisor = 1;
@@ -59,6 +61,7 @@ class Is_Prime: public Strategy{
             else if(divisores == 2)
                 count++;
         }
+    virtual ~ES_primo();
 };
 
 class Three_mult10: public Strategy{
@@ -71,6 +74,7 @@ class Three_mult10: public Strategy{
             else if(n%10==0)
                 count++;
         }
+    virtual ~Three_mult10();
 };
 
 class Two_mult25: public Strategy{
@@ -83,6 +87,7 @@ class Two_mult25: public Strategy{
             else if(n%25 == 0)
                 count++;
         }
+    virtual ~Two_mult25();
 };
 
 class Player{
@@ -102,18 +107,18 @@ class Player{
             this->strategy = strategy;
         }
         Strategy* getStrategy(){return strategy;}
-        ~Player(){}
+        virtual ~Player(){}
 };
 
-class XYZ{
+class empresa_xyz{
     protected:
-        XYZ(){}
-        static XYZ* system;
+        empresa_xyz(){}
+        static empresa_xyz* system;
         vector<Player*> players;
     public:
-        XYZ(XYZ &other) = delete;
-        void operator=(const XYZ &) = delete;
-        static XYZ *GetInstance();
+        empresa_xyz(empresa_xyz &other) = delete;
+        void operator=(const empresa_xyz &) = delete;
+        static empresa_xyz *GetInstance();
         void initial_game(){
             string name = "";
             for(int i=0; i<5; i++){
@@ -122,11 +127,11 @@ class XYZ{
                 cin>>name;
                 Player* player = new Player(name);  
                 cout<<"Ingrese una de las siguientes opciones: "<<endl;
-                cout<<"Opcion 1 : Cinco pares"<<endl;
-                cout<<"Opcion 2 : Cinco impares"<<endl;
-                cout<<"Opcion 3 : Un numero primo"<<endl;
-                cout<<"Opcion 4 : Tres numeros multiplos de 10"<<endl;
-                cout<<"Opcion 5 : Dos numeros multipos de 25"<<endl;
+                cout<<"1: Cinco pares"<<endl;
+                cout<<"2: Cinco impares"<<endl;
+                cout<<"3: Un numero primo"<<endl;
+                cout<<"4: Tres numeros multiplos de 10"<<endl;
+                cout<<"5 : Dos numeros multipos de 25"<<endl;
                 cout<<"Ingrese su opcion : ";
                 cin>>opcion;
                 if(opcion == 1){
@@ -136,7 +141,7 @@ class XYZ{
                     auto* five_impairs = new Five_Impair();
                     player->setStrategy(five_impairs);
                 }else if(opcion == 3){
-                    auto* is_prime = new Is_Prime();
+                    auto* is_prime = new ES_primo();
                     player->setStrategy(is_prime);
                 }else if(opcion == 4){
                     auto* three_mult10 = new Three_mult10();
@@ -152,10 +157,11 @@ class XYZ{
         srand(time(NULL));
         int i = 0;
         while(true){
-            int random = rand()%100;
+                uint8_t random_chars[10];
+            int random = rand()%99;
             players[i]->getStrategy()->function(random);
             if(players[i]->getStrategy()->getWinner()){
-                cout<<"Fin del juego, gano el jugador "<<i+1<<endl;
+                cout<<"Fin, gano el jugador "<<i+1<<endl;
                 break;
             }
             if(i<players.size())
@@ -163,19 +169,19 @@ class XYZ{
             i++;
         }
     }
-    ~XYZ(){}
+    ~empresa_xyz(){}
 };
 
-XYZ* XYZ::system = nullptr;
+empresa_xyz* empresa_xyz::system = nullptr;
 
-XYZ* XYZ::GetInstance(){
+empresa_xyz* empresa_xyz::GetInstance(){
     if(system == nullptr)
-      system = new XYZ();
+      system = new empresa_xyz();
     return system;
 }
 
 int main(){
-    XYZ*control = XYZ::GetInstance();
+    empresa_xyz*control = empresa_xyz::GetInstance();
     control->initial_game();
     control->play();
     delete control;
